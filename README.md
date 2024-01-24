@@ -14,3 +14,5 @@ for i in CRR6470*; do gunzip $i; done
 ### Cutadapt for each sample using Illumina adaptors
 cutadapt -a CTGTCTCTTATACACATCT -A CTGTCTCTTATACACATCT -o CRR647039_f1.cutadapt.fastq -p CRR647039_r2.cutadapt.fastq CRR647039_f1.fq CRR647039_r2.fq 
 ### Check quality with FastQC
+for i in *cutadapt.fastq; do fastqc $i; done
+
