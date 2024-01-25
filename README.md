@@ -21,3 +21,5 @@ for i in *cutadapt.fastq; do fastqc $i; done
 bwa index ../../../Lin_ref_genome/GWHCAXI00000000.genome.fasta
 # Alignments
 bwa mem -t 4 -k 32 -M ../../Lin_ref_genome/GWHCAXI00000000.genome.fasta ../trimmed_data/CRR647019_f1.cutadapt.fastq ../trimmed_data/CRR647019_r2.cutadapt.fastq > acoma.sam
+bwa mem -t 4 -k 32 -M ../../Lin_ref_genome/GWHCAXI00000000.genome.fasta ../trimmed_data/CRR647020_f1.cutadapt.fastq ../trimmed_data/CRR647020_r2.cutadapt.fastq > apalachee.sam
+bwa mem -t 4 -k 32 -M ../../Lin_ref_genome/GWHCAXI00000000.genome.fasta ../trimmed_data/CRR647039_f1.cutadapt.fastq ../trimmed_data/CRR647039_r2.cutadapt.fastq > dallas.sam
