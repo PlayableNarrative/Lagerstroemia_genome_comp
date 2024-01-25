@@ -23,3 +23,13 @@ bwa index ../../../Lin_ref_genome/GWHCAXI00000000.genome.fasta
 bwa mem -t 4 -k 32 -M ../../Lin_ref_genome/GWHCAXI00000000.genome.fasta ../trimmed_data/CRR647019_f1.cutadapt.fastq ../trimmed_data/CRR647019_r2.cutadapt.fastq > acoma.sam
 bwa mem -t 4 -k 32 -M ../../Lin_ref_genome/GWHCAXI00000000.genome.fasta ../trimmed_data/CRR647020_f1.cutadapt.fastq ../trimmed_data/CRR647020_r2.cutadapt.fastq > apalachee.sam
 bwa mem -t 4 -k 32 -M ../../Lin_ref_genome/GWHCAXI00000000.genome.fasta ../trimmed_data/CRR647039_f1.cutadapt.fastq ../trimmed_data/CRR647039_r2.cutadapt.fastq > dallas.sam
+
+## Clean up alignment data
+# Remove duplicate reads
+samtools rmdup acoma.sam acoma.rmdup.sam
+samtools rmdup apalachee.sam apalachee.rmdup.sam
+samtools rmdup dallas.sam dallas.rmdup.sam
+# Convert sam files to bam files
+samtools view -S -b acoma.rmdup.sam > acoma.bam; samtools sort acoma.bam > acoma.sorted.bam
+samtools view -S -b apalachee.rmdup.sam > apalachee.bam; samtools sort apalachee.bam > apalachee.sorted.bam
+samtools view -S -b dallas.rmdup.sam > dallas.bam; samtools sort dallas.bam > dallas.sorted.bam
